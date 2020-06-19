@@ -36,7 +36,7 @@ int main(int argc, const char *argv[])
     int imgFillWidth = 4;  // no. of digits which make up the file index (e.g. img-0001.png)
 
     // misc
-    int dataBufferSize = 2;       // no. of images which are held in memory (ring buffer) at the same time
+    int dataBufferSize = 3;//2;       // no. of images which are held in memory (ring buffer) at the same time
     vector<DataFrame> dataBuffer; // list of data frames which are held in memory at the same time
     bool bVis = false;            // visualize results
 
@@ -62,6 +62,10 @@ int main(int argc, const char *argv[])
         // push image into data frame buffer
         DataFrame frame;
         frame.cameraImg = imgGray;
+        if (dataBuffer.size() >= dataBufferSize)
+        {
+            dataBuffer.erase(dataBuffer.begin());
+        }
         dataBuffer.push_back(frame);
 
         //// EOF STUDENT ASSIGNMENT
