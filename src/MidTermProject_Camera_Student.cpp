@@ -106,7 +106,16 @@ int main(int argc, const char *argv[])
         cv::Rect vehicleRect(535, 180, 180, 150);
         if (bFocusOnVehicle)
         {
-            // ...
+            vector<cv::KeyPoint> filtered_keypoints;
+            for (cv::KeyPoint &kp: keypoints)
+            {
+                if(vehicleRect.contains(kp.pt))
+                {
+                    filtered_keypoints.push_back(kp);
+                }
+            }
+            cout << detectorType << " n= " << keypoints.size() << " keypoints, filtered= " << filtered_keypoints.size() << endl;
+            keypoints = filtered_keypoints;
         }
 
         //// EOF STUDENT ASSIGNMENT
@@ -171,7 +180,7 @@ int main(int argc, const char *argv[])
             cout << "#4 : MATCH KEYPOINT DESCRIPTORS done" << endl;
 
             // visualize matches between current and previous image
-            //bVis = true;
+            bVis = true;
             if (bVis)
             {
                 cv::Mat matchImg = ((dataBuffer.end() - 1)->cameraImg).clone();
