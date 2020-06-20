@@ -44,7 +44,7 @@ void matchDescriptors(std::vector<cv::KeyPoint> &kPtsSource, std::vector<cv::Key
         vector<vector<cv::DMatch>> knn_matches;
         matcher->knnMatch(descSource, descRef, knn_matches, k);
 
-        const float ratio_thresh = 0.7f;
+        const float ratio_thresh = 0.8f;
         for (size_t i = 0; i < knn_matches.size(); i++)
         {
             if (knn_matches[i][0].distance < ratio_thresh * knn_matches[i][1].distance)
