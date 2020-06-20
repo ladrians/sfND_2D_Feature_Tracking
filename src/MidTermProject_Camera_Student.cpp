@@ -82,7 +82,7 @@ int main(int argc, const char *argv[])
         //// -> HARRIS, FAST, BRISK, ORB, AKAZE, SIFT
         bool bVis = false;
         vector<string> detector_types = {"SHITOMASI", "HARRIS", "FAST", "BRISK", "ORB", "AKAZE", "SIFT"};
-        detectorType = detector_types.at(6);
+        detectorType = detector_types.at(0);
 
         if (detectorType.compare("SHITOMASI") == 0)
         {
@@ -147,7 +147,7 @@ int main(int argc, const char *argv[])
 
         cv::Mat descriptors;
         string descriptorType = "BRISK"; // BRIEF, ORB, FREAK, AKAZE, SIFT
-        descriptorType = descriptor_types.at(3);
+        descriptorType = descriptor_types.at(0);
         descKeypoints((dataBuffer.end() - 1)->keypoints, (dataBuffer.end() - 1)->cameraImg, descriptors, descriptorType);
         //// EOF STUDENT ASSIGNMENT
 
@@ -171,9 +171,9 @@ int main(int argc, const char *argv[])
             vector<string> matcherTypes = {"MAT_BF", "MAT_FLANN"};
             vector<string> descriptorTypes = {"DES_BINARY", "DES_HOG"};
             vector<string> selectorTypes = {"SEL_NN", "SEL_KNN"};
-            matcherType = matcherTypes.at(1);
+            matcherType = matcherTypes.at(0);
             descriptorType = descriptorTypes.at(0);
-            selectorType = selectorTypes.at(0);
+            selectorType = selectorTypes.at(1);
             //// TASK MP.6 -> add KNN match selection and perform descriptor distance ratio filtering with t=0.8 in file matching2D.cpp
 
             matchDescriptors((dataBuffer.end() - 2)->keypoints, (dataBuffer.end() - 1)->keypoints,
