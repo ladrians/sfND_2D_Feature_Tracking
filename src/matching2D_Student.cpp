@@ -22,11 +22,9 @@ void matchDescriptors(std::vector<cv::KeyPoint> &kPtsSource, std::vector<cv::Key
     }
     else if (matcherType.compare("MAT_FLANN") == 0)
     {
-        if (descSource.type() != CV_32F) // OpenCV Error: Unsupported format or combination of formats (type=0) in buildIndex_
-        {
-            descSource.convertTo(descSource, CV_32F);
-            descRef.convertTo(descRef, CV_32F);
-        }
+        // https://stackoverflow.com/questions/28694048/opencv-flann-assertion-fails
+        descSource.convertTo(descSource, CV_32F);
+        descRef.convertTo(descRef, CV_32F);
         matcher = cv::FlannBasedMatcher::create();
     }
 
