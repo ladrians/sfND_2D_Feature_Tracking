@@ -106,6 +106,19 @@ The algorithms were tested in different combinations and compared with regard to
 
 Section `MP.7` counts the number of keypoints on the preceding vehicle for all 10 images and take note of the distribution of their neighborhood size, using all the detectors implemented.
 
+|Detector|Keypoints|Time(ms)|Descriptor|Keypoints|Time(ms)|Matches|
+|---|---|---|---|---|---|---|
+|Shi-Tomasi|1370|20.9835|BRISK|125|1.4278||
+|Shi-Tomasi|1301|18.4651|BRISK|118|2.5446|95|
+|Shi-Tomasi|1361|18.1078|BRISK|123|2.4739|88|
+|Shi-Tomasi|1358|19.3971|BRISK|120|2.37|80|
+|Shi-Tomasi|1333|18.2879|BRISK|120|3.5536|90|
+|Shi-Tomasi|1284|22.3868|BRISK|113|2.4855|82|
+|Shi-Tomasi|1322|18.0228|BRISK|114|2.5337|79|
+|Shi-Tomasi|1366|16.8659|BRISK|123|2.4803|85|
+|Shi-Tomasi|1389|16.211|BRISK|111|2.4035|86|
+|Shi-Tomasi|1339|16.8063|BRISK|112|2.4004|82|
+
 #### Performance Evaluation 2
 
 Section `MP.8` counts the number of matched keypoints for all 10 images using all possible combinations of detectors and descriptors. In the matching step, the BF approach is used with the descriptor distance ratio (variable `ratio_thresh`) set to `0.8`.
