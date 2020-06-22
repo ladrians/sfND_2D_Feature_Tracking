@@ -199,7 +199,7 @@ void detKeypointsHarris(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, bool
     } // eof loop over rows
 
     t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
-    cout << "|Harris|" << keypoints.size() << "|" << 1000 * t / 1.0 << "|" << endl;
+    cout << "|Harris|" << keypoints.size() << "|" << 1000 * t / 1.0 << "|";
 
     if (bVis)
     {
@@ -244,7 +244,7 @@ void detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, std:
     featureDetector->detect(img, keypoints);
 
     t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
-    cout << "|" << detectorType << "|" << keypoints.size() << "|" << 1000 * t / 1.0 << "|" << endl;
+    cout << "|" << detectorType << "|" << keypoints.size() << "|" << 1000 * t / 1.0 << "|";
 
     if (bVis)
     {
