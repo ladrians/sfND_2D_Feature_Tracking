@@ -102,26 +102,50 @@ selectorType = selectorTypes.at(0);
 
 The algorithms were tested in different combinations and compared with regard to some performance measures.
 
-#### Performance Evaluation 1
+#### Detector Keypoints Analysis
 
 Section `MP.7` counts the number of keypoints on the preceding vehicle for all 10 images and take note of the distribution of their neighborhood size, using all the detectors implemented.
 
-#### Performance Evaluation 2
+|Detector|Average Keypoints|Average Time(ms)|
+|---|---|---|
+|Shi-Tomasi|1342.3|16.86845|
+|Harris|173.7|19.3867775|
+|FAST|4920.4|2.976255|
+|BRISK|2711.6|392.601175|
+|ORB|500|8.842625|
+|AKAZE|1342.9|84.624945|
+|SIFT|1386|108.1360375|
+
+The `Harris` and `ORB` detectors where the ones with the least ammout of keypoints while `FAST`, `SIFT` got the most.
+
+#### Descriptor Keypoints Analysis
 
 Section `MP.8` counts the number of matched keypoints for all 10 images using all possible combinations of detectors and descriptors. In the matching step, the BF approach is used with the descriptor distance ratio (variable `ratio_thresh`) set to `0.8`.
 
-#### MP.9 Performance Evaluation 3
-
-Section `MP.9` compares the time it takes for keypoint detection and descriptor extraction in the following table.
-
-### Comments
-
-The TOP3 detector / descriptor combinations to recommended are as follows:
-
-|Detector|Time|Keypoints|Time|
+|Descriptor|Average Keypoints|Average Time(ms)|Average Matches|
 |---|---|---|---|
-| | | | |
-| | | | |
+|BRIEF|178.5857143|2.611125714|129.6349206|
+|BRISK|177.2714286|2.366152857|114.6349206|
+|FREAK|167.8428571|43.67435143|109.0634921|
+|ORB|185.2333333|4.670678333|135.1296296|
+|SIFT|138.7|52.85753|89.11111111|
+
+The `ORB`, `BRIEF` and `BRISK` descriptors got the better results.
+
+#### MP.9 Recommendations
+
+Section `MP.9` compares the time it takes for keypoint detection and descriptor extraction. From the previous tables
+
+ * Best detectors: `FAST`, `SIFT`.
+ * Best descriptors: `ORB`, `BRIEF`, `BRISK`.
+
+The selection are as follows
+
+ * `FAST` + `ORB`.
+ * `FAST` + `BRIEF`.
+ * `SIFT` + `BRISK`.
+
+For more information check the [data.xlsx](./data/data.xlsx) file.
 
 ### Links
 
