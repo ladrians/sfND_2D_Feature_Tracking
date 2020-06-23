@@ -164,18 +164,15 @@ int main(int argc, const char *argv[])
             /* MATCH KEYPOINT DESCRIPTORS */
 
             vector<cv::DMatch> matches;
-            string matcherType = "MAT_BF";        // MAT_BF, MAT_FLANN
-            string descriptorType = "DES_BINARY"; // DES_BINARY, DES_HOG
-            string selectorType = "SEL_NN";       // SEL_NN, SEL_KNN
 
             //// STUDENT ASSIGNMENT
             //// TASK MP.5 -> add FLANN matching in file matching2D.cpp
             vector<string> matcherTypes = {"MAT_BF", "MAT_FLANN"};
             vector<string> descriptorTypes = {"DES_BINARY", "DES_HOG"};
             vector<string> selectorTypes = {"SEL_NN", "SEL_KNN"};
-            matcherType = matcherTypes.at(0);
-            descriptorType = descriptorTypes.at(0);
-            selectorType = selectorTypes.at(1);
+            string matcherType = matcherTypes.at(0);
+            string descriptorType = (descriptorType.compare("SIFT") == 0?descriptorTypes.at(1):descriptorTypes.at(0));
+            string selectorType = selectorTypes.at(1);
             //// TASK MP.6 -> add KNN match selection and perform descriptor distance ratio filtering with t=0.8 in file matching2D.cpp
 
             matchDescriptors((dataBuffer.end() - 2)->keypoints, (dataBuffer.end() - 1)->keypoints,
