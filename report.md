@@ -50,6 +50,16 @@ else
 }
 ```
 
+The results are:
+
+ * [Shi-Tomasi sample](./data/shi_tomasi_corners01.png)
+ * [Harris sample](./data/corners_corners01.png)
+ * [FAST sample](./data/fast_corners01.png)
+ * [BRISK sample](./data/brisk_corners01.png)
+ * [ORB sample](./data/orb_corners01.png)
+ * [AKAZE sample](./data/akaze_corners01.png)
+ * [SIFT sample](./data/sift_corners01.png)
+
 #### Keypoint Removal
 
 Section `MP.3` removes all keypoints outside of a pre-defined rectangle with dimensions: `(535, 180, 180, 150)`.
@@ -58,6 +68,7 @@ Section `MP.3` removes all keypoints outside of a pre-defined rectangle with dim
 vector<cv::KeyPoint> filtered_keypoints;
 for (cv::KeyPoint &kp: keypoints)
 {
+    // https://knowledge.udacity.com/questions/112624
     if(vehicleRect.contains(kp.pt))
     {
         filtered_keypoints.push_back(kp);
