@@ -53,7 +53,7 @@ else
 The results are:
 
  * [Shi-Tomasi sample](./data/shi_tomasi_corners01.png)
- * [Harris sample](./data/corners_corners01.png)
+ * [Harris sample](./data/harris_corners01.png)
  * [FAST sample](./data/fast_corners01.png)
  * [BRISK sample](./data/brisk_corners01.png)
  * [ORB sample](./data/orb_corners01.png)
@@ -128,6 +128,8 @@ Section `MP.7` counts the number of keypoints on the preceding vehicle for all 1
 |SIFT|1386|108.1360375|
 
 The `Harris` and `ORB` detectors where the ones with the least ammout of keypoints while `FAST`, `SIFT` got the most.
+
+The distribution of their neighborhood size can be checked with the associated [images](./data/), best results in this matter are `FAST`, `AKAZE` and `SIFT` detectors.
 
 #### Descriptor Keypoints Analysis
 
