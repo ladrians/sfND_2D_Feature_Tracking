@@ -226,6 +226,7 @@ void detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, std:
     if (detectorType.compare("FAST") == 0)
     {
         int threshold = 30; // FAST/AGAST detection threshold score.
+        // threshold on difference between intensity of the central pixel and pixels of a circle around this pixel.
         featureDetector = cv::FastFeatureDetector::create(30);
     }
     else if (detectorType.compare("BRISK") == 0)
