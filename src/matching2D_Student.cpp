@@ -10,10 +10,12 @@ void matchDescriptors(std::vector<cv::KeyPoint> &kPtsSource, std::vector<cv::Key
     // configure matcher
     bool crossCheck = false;
     cv::Ptr<cv::DescriptorMatcher> matcher;
+    // Doc https://docs.opencv.org/4.1.0/d8/d9b/group__features2d__match.html
 
     if (matcherType.compare("MAT_BF") == 0)
     {
         int normType = cv::NORM_HAMMING;
+        // https://knowledge.udacity.com/questions/117307 and https://knowledge.udacity.com/questions/67899
         if(descriptorType.compare("DES_HOG") == 0)
         {
             normType = cv::NORM_L2;
@@ -61,6 +63,7 @@ void matchDescriptors(std::vector<cv::KeyPoint> &kPtsSource, std::vector<cv::Key
 void descKeypoints(vector<cv::KeyPoint> &keypoints, cv::Mat &img, cv::Mat &descriptors, string descriptorType)
 {
     // select appropriate descriptor
+    // Doc https://docs.opencv.org/4.1.0/d5/d51/group__features2d__main.html
     cv::Ptr<cv::DescriptorExtractor> extractor;
     if (descriptorType.compare("BRISK") == 0)
     {
@@ -222,7 +225,8 @@ void detKeypointsModern(std::vector<cv::KeyPoint> &keypoints, cv::Mat &img, std:
 
     if (detectorType.compare("FAST") == 0)
     {
-        featureDetector = cv::FastFeatureDetector::create();
+        int threshold = 30; // FAST/AGAST detection threshold score.
+        featureDetector = cv::FastFeatureDetector::create(30);
     }
     else if (detectorType.compare("BRISK") == 0)
     {
