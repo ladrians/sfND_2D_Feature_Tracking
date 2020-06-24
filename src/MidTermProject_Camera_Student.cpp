@@ -47,7 +47,8 @@ int main(int argc, const char *argv[])
     int dataBufferSize = 3;//2;       // no. of images which are held in memory (ring buffer) at the same time
     vector<DataFrame> dataBuffer; // list of data frames which are held in memory at the same time
     bool bVis = false;            // visualize results
-    bool bVisGlobal = bVis;
+    bool bVisGlobal = false;
+    bool bVisMatchesGlobal = false;
 
     /* MAIN LOOP OVER ALL IMAGES */
     cout << "|Detector|Keypoints|Time(ms)|Descriptor|Keypoints|Time(ms)|Matches|" << endl;
@@ -215,7 +216,7 @@ int main(int argc, const char *argv[])
                     //cout << "#4 : MATCH KEYPOINT DESCRIPTORS done" << endl;
 
                     // visualize matches between current and previous image
-                    //bVis = false;
+                    bVis = bVisMatchesGlobal;
                     if (bVis)
                     {
                         cv::Mat matchImg = ((dataBuffer.end() - 1)->cameraImg).clone();
@@ -225,7 +226,7 @@ int main(int argc, const char *argv[])
                                         cv::Scalar::all(-1), cv::Scalar::all(-1),
                                         vector<char>(), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
 
-                        string windowName = "Matching keypoints between two camera images";
+                        string windowName = detectorType + "/" + descriptorType + " matching keypoints";
                         cv::namedWindow(windowName, 7);
                         cv::imshow(windowName, matchImg);
                         cout << "Press key to continue to next image" << endl;
